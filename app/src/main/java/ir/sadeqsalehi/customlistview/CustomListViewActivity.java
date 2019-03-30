@@ -12,7 +12,7 @@ public class CustomListViewActivity extends AppCompatActivity {
 
     List<City> cities;
     ListView citiesListView;
-    ArrayAdapter<City> adapter;
+    CityAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +25,9 @@ public class CustomListViewActivity extends AppCompatActivity {
     }
 
     private void refreshDisplay() {
-            adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,cities);
+           adapter= new CityAdapter(this,cities);
             citiesListView.setAdapter(adapter);
-
-
-    }
-
+   }
     private void populateCitiesList() {
                 cities.add(new City("Amsterdam",12000000,R.drawable.amsterdam));
                 cities.add(new City("Austin",800000,R.drawable.austin));
