@@ -54,22 +54,21 @@ public class CityAdapter extends ArrayAdapter {
         TextView cityPopulation;
         ImageView imgSearch;
 
-        public void fill(City city) {
-            if (city.getId() != 0) {
-                cityImage.setImageResource(city.getId());
-            }
+        void fill(City city) {
+            cityImage.setImageResource(city.getId());
             cityName.setText(city.getName());
             cityPopulation.setText(String.valueOf(city.getPopulation()));
             imgSearch.setTag(city.getName());
             imgSearch.setOnClickListener(this);
         }
+
         @Override
         public void onClick(View v) {
-            String uri= "https://ar.wikipedia.org/wiki/"+v.getTag().toString();
+            String uri = "https://ar.wikipedia.org/wiki/" + v.getTag().toString();
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(uri));
             getContext().startActivity(intent);
-           // Toast.makeText(getContext(), "Search for "+v.getTag().toString(), Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getContext(), "Search for "+v.getTag().toString(), Toast.LENGTH_SHORT).show();
         }
     }
 }
